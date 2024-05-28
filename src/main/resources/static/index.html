@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" type="image/x-icon" href="image/favicon.ico" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>i/o Data</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html">Bienvenido!</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        
+        <div id="layoutSidenav">
+            
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Menú</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Exportar de datos
+                            </a>
+                            <a class="nav-link" href="subidadeDatos.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Importación data
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <!-- <div class="small">Logueado como:</div>
+                        Usuario Test -->
+                    </div>
+                </nav>
+            </div>
+            
+            <div id="layoutSidenav_content" style="background-color: #f8f9fa">
+                <main>
+                    <div class="container px-5 mt-4 mb-4">
+                        <div class="row ">
+                            <div class=" col-lg-12 mt-4 mb-3">
+                                <h1>Exportación de Datos</h1>
+                            </div>
+                        </div>
+                        
+                        <div class="row gx-5 align-items-center">
+                            
+                            <br>
+                            <div class="card col-lg-12 card-body mb-3">
+                                <div id="mensaje" class="mb-3"></div>
+                                <!-- Mashead text and app badges-->
+                                <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                                    <h5 class="display-6 lh-1 mb-3" >Arrastre o seleccione el archivo a exportar</h5>
+                                   
+                                    <div class="d-flex flex-column flex-lg-row align-items-center">
+                                        <!-- <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/google-play-badge.svg" alt="..." /></a> -->
+                                        <!-- <a href="#!"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="..." /></a> -->
+                                    </div>
+                                </div>
+                                <div>
+                                    <form id="importacionMP"  class="form-control input ng-invalid ng-untouched ng-pristine"  enctype="multipart/form-data">
+                                        <div _ngcontent-gxt-c125="" ng2filedrop="" tabindex="0" class="well upload-file ng-star-inserted">
+                                            <div _ngcontent-gxt-c125="" class="d-flex flex-column align-items-center">
+                                                <su-icon _ngcontent-gxt-c125="" color="#999999" name="icon-b-FUNC132--clouds_upload" size="2rem" _nghost-gxt-c42=""><span _ngcontent-gxt-c42="" class="icon icon-b-FUNC132--clouds_upload" style="font-size: 2rem; color: rgb(153, 153, 153);"></span></su-icon>
+                                                <label _ngcontent-gxt-c125="" class="">Seleccione o arrastre dentro del recuadro</label>
+                                                <label _ngcontent-gxt-c125="" class="" for="1-0">Archivos de tipo Excel con los casos a generar</label>
+                                                <br>
+                                                    <input id="idfile" tabindex="-1" type="file" class="form-control input hidden-input" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required >
+                                                    </div></div><!---->
+                                                    <div _ngcontent-gxt-c125="" class="fileUpload-info-message">
+                                                        <p _ngcontent-gxt-c125="" class="fileUpload-info-message-paragraph"></p>
+                                                    </div>
+                                                    <div _ngcontent-gxt-c125="" class="upload-file-components ng-star-inserted">
+                                                        <ul _ngcontent-gxt-c125="" class="list-inline"><!---->
+                                                            <div _ngcontent-gxt-c125="" class="progress" hidden="">
+                                                    <div _ngcontent-gxt-c125="" role="progressbar" class="progress-bar" style="width: 0%;"> -1% 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="mb-3" style="padding-left: 10px;" >
+                                            <button id="btnGL" type="submit" class="btn btn-success rounded-pill px-3 mb-3 mb-lg-2" style="width: 25rem; padding: 10px; ">Procesar  </button>
+                                        </div>
+                                        <div id="barraprogreso" style="display: none;">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                        
+                                </div>
+                        </div>
+                        <div class="row gx-5 align-items-center">
+                            <div class="card col-lg-3 mb-3">
+                                <div class="card-body">
+                                    <div>
+                                        <h4 class="mt-4 mb-2" >Proveedores</h4>
+                                    </div>
+                                    <div class="list-group">
+                                        <label class="list-group-item">
+                                        <input class="form-check-input me-1" onchange="btodos();" type="checkbox" value="1" id="0" checked>
+                                        Todos
+                                        </label>
+                                    </div>
+                                    <div class="list-group listag" id="listProveedores" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; DGL WebSite</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+        <script src="js/dataconfiguration.js"></script>
+    </body>
+</html>
+<script>
+    $(document).ready(function() {
+        getProveedores()
+    });
+
+    var btnimportar = document.getElementById("importacionMP");
+    var btndescargar = document.getElementById("btnDownload");
+    var fileInput = document.getElementById("idfile");
+    var form;
+    const listItems = document.querySelectorAll('.listag .list-group-item');
+    todos = true;
+    var selectedCheckboxes = []; // Array para guardar los checkboxes seleccionados
+
+    
+
+    function getProveedores(){
+        $.ajax({
+            url:  SERVER + "/proveedores/getAll",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+            $.each(data, function(index, value) {
+                $(".listag").append("<label class='list-group-item'><input class='form-check-input me-1 checkbox-item' type='checkbox' onclick='modificacionClick(this)' value='"+ value.id + "' id='"+ value.id + "'> " + value.descripcion + " </label>");
+            });
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+            }
+        });
+    }
+
+    function modificacionClick(e) {
+            // Verificar si el checkbox está seleccionado
+            if (e.checked) {
+                // Agregar el id del checkbox al array
+                selectedCheckboxes.push(e.id);
+            } else {
+                // Remover el id del checkbox del array si el checkbox ha sido deseleccionado
+                var index = selectedCheckboxes.indexOf(e.id);
+                if (index !== -1) {
+                selectedCheckboxes.splice(index, 1);
+                }
+            }
+        }
+
+    
+    function btodos(){
+        todos=!todos;
+        if(!todos)
+            $("#listProveedores").show("slow");
+        else
+            $("#listProveedores").hide("slow");
+    }
+
+
+    btnimportar.onsubmit = (e) => {
+        e.preventDefault();
+        disablebutton();
+        $("#barraprogreso").show("fast");
+        
+        form = new FormData();
+        form.append("file",  fileInput.files[0], fileInput.files[0].name);
+        enviarExcel2();
+        // $("#barraprogreso").hide("fast");
+    }
+    var settings = {
+        "url": SERVER + "/importacion/upload",
+        "method": "POST",
+        "timeout": 0,
+        "processData": false,
+        "mimeType": "multipart/form-data",
+        "contentType": false,
+        "data": form,
+        beforeSend: function( xhr ) {
+            xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+          },
+        "headers" : {
+            'Access-Control-Allow-Origin': SERVER 
+        }
+      };
+      
+    
+    function disablebutton(){
+        $("#btnGL").prop('disabled', true);
+    }
+    function enablebutton(){
+        $("#btnGL").prop('disabled', false);
+    }
+
+    function enviarExcel2(){
+        
+        $.ajax( {
+           url: SERVER + "/importacion/uploadcruce",
+           type: 'POST',
+           data: form,
+           timeout: 0,
+           processData: false,
+           contentType: false,
+           mimeType: "multipart/form-data",
+           headers : {
+            'Access-Control-Allow-Origin': SERVER 
+            },
+           success: function (data, textStatus, jqXHR) {
+                var jsonParseado = JSON.parse(data);
+                if(jsonParseado.errores.length > 0 ){
+                    erroresList=jsonParseado.errores;
+                    let linkErrores =  '<a href="#" onclick="modalErrores()"> Ver errores ';
+                    fc_showAlertmensaje("mensaje","warning","Importacion terminada con errores! ","verifique errores aquí  " + linkErrores);
+                } 
+                descargarDatos(jsonParseado.iddescarga);
+              
+           },
+           error: function (err) {
+                alert("Ocurrio un error inesperado, contacte al administrador");
+                $("#idfile").val("");
+                fc_showAlertmensaje("mensaje","danger","No pudo completarse la solicitud"," \nRevise el archivo adjunto, pruebe con otro o contacte al administrador");
+                enablebutton();
+                $("#barraprogreso").hide("fast");
+                var jsonErrorParseado = JSON.parse(err);
+                console.log(jsonErrorParseado);
+            }
+        });
+    } 
+    function descargarDatos(id){
+        var jdata = {
+            "iddescarga": id,
+            "proveedores" : selectedCheckboxes,
+            "todos" : todos
+        }
+        var prov = jdata.proveedores;
+        let url =  SERVER + "/importacion/getDownloadCruce?iddescarga=" + id + "&lista=" + prov + "&todos=" + todos ; 
+        console.log(url);
+        location.href=  url;
+        $("#barraprogreso").hide("fast");
+        enablebutton();
+    } 
+
+    
+    function descargarDatos2(id){
+        
+        jdata = {
+            "iddescarga": id,
+            "proveedores" : selectedCheckboxes,
+            "todos" : todos
+        }
+       $.ajax( {
+           url: SERVER + "/importacion/downloadCruce",
+           type: 'POST',
+           data: JSON.stringify(jdata),
+           contentType: "application/json",
+           success: function (data, textStatus, jqXHR) {
+                // var jsonParseado = JSON.parse(data);
+                // cargarTablaHistory(data);
+                alert("ENTRO");
+           },
+           error: function (err) {
+                alert("ERROR");
+                var jsonErrorParseado = JSON.parse(err);
+                console.log(jsonErrorParseado);
+            }
+        });
+   }
+   function descargarDatos3(iddescarga) {
+        jdata = {
+            "iddescarga": iddescarga,
+            "proveedores" : selectedCheckboxes,
+            "todos" : todos
+        }
+        $.ajax({
+            type: "POST",
+            url: SERVER + "/importacion/downloadCruce",
+            data: JSON.stringify(jdata),
+            contentType: "application/json",
+            responseType: 'blob',
+            success: function (data) {
+                alert("OK")
+            },
+            statusCode: {
+                200: function(data) {
+                    alert("OK")
+                    var file = new Blob([data], {type: 'application/vnd.ms-excel'});
+                    var fileURL = URL.createObjectURL(file);
+                    window.open(fileURL);
+                }
+            }
+        }).done(function (data) {
+                alert("Entro")
+                var file = new Blob([data], {type: 'application/vnd.ms-excel'});
+                var fileURL = URL.createObjectURL(file);
+                window.open(fileURL);
+            }
+        );
+    }
+    var erroresList= {};
+
+    function modalErrores(){
+        $('#modalDatos').modal('toggle');
+        cargarTablaErrores(erroresList);
+    }
+
+    function bajar(idDescarga,){
+        location.href= SERVER + "importacion/downLoadLinks?iddescarga=" + idDescarga;
+        $("#idfile").val("");
+        $("#barraprogreso").hide("fast");
+        fc_showAlertmensaje("mensaje","success","Importacion terminada correctamente!","");
+        enablebutton();
+    }
+    function fc_showAlertAutoClose (iddiv, clase, mensajeStrong, mensaje ){
+        var idmensaje='#' + iddiv;
+    
+        $(idmensaje).html("");
+        $(idmensaje).html('<div class="alert alert-' + clase + ' alert-dismissible fade show" role="alert"> \n\
+                                    <strong> ' + mensajeStrong +"</strong>"  + mensaje + ' \n\
+                                      <span aria-hidden="true">&times;</span>\n\
+                                    </button> \n\
+                                    </div>');
+        TriggerAlertClose();
+
+        function TriggerAlertClose() {
+            window.setTimeout(function () {
+                $(".alert").fadeTo(1000, 0).slideUp(1000, function () {
+                        $(this).remove();
+                    });
+                }, 5000);
+        };
+    }
+
+    function fc_showAlertmensaje(iddiv, clase, mensajeStrong, mensaje ){
+        var idmensaje='#' + iddiv;
+
+        $(idmensaje).html("");
+        $(idmensaje).html('<div class="alert alert-' + clase + ' alert-dismissible fade show" role="alert"> \n\
+                                    <strong> ' + mensajeStrong+"</strong>"  +  mensaje + ' \n\
+                                    </button> \n\
+                                    </div>');
+
+    }
+
+    function abrirHistorial(){
+        $('#modalDatos').modal('toggle');
+        modalTablaHistorial();
+        // cargarDatosHistorial();
+        // $("#modalDatos").modal({backdrop: 'static'});
+    }
+
+    function cargarDatosHistorial(){
+       
+        $.ajax( {
+            url: SERVER + "/exportaciones/getAll",
+            type: 'GET',
+            data: {},
+            success: function (data, textStatus, jqXHR) {
+                 // var jsonParseado = JSON.parse(data);
+                 cargarTablaHistory(data);
+            },
+            error: function (err) {
+                 var jsonErrorParseado = JSON.parse(err);
+                 console.log(jsonErrorParseado);
+             }
+         });
+    }
+
+    
+
+    var modalTablaHistorial = () => {
+        $("#tablaHistorial").html("");
+        $("#idTitulo").text("Historial")
+        var dato = {};
+        let url= SERVER + "/exportaciones/getAll";
+        
+        var tablacl = $("#DataTable").DataTable({
+            "destroy" : true ,
+            "ajax" : 
+                    {
+                        "method" : "GET",
+                        "url" : url,
+                        "dataSrc": "",
+                    },
+            "columns" : [
+                        {title : "Id" , data : "id", width: '20px' },
+                        {title : "Nombre" , data : "descripcion", width: '20px'  },
+                        {title : "Usuario" , data : "usuario.nombre", width: '20px'  },
+                        {title : "Fecha" , data : "fechacarga", width: '20px'  },
+                        {title : "Descargar" , data : "id", width: '20px'  },
+                    ],
+            columnDefs: [
+                    { width: '20px', targets: 0 },
+                    {   targets: 3,
+                        render: function (data) {
+                            return functionFecha(data);
+                        }
+                    },
+                    {   targets: 4,
+                        render: function (data) {
+                            return linkDescarga(data);
+                        }
+                    }
+            ],
+            "order": [
+               [0, 'desc']
+           ]
+        });
+        
+    }
+
+    var modalErrores2 = (list) => {
+        $("#idTitulo").text("Errores")
+        var dato = {};
+        let url= SERVER + "/exportaciones/getAll";
+        
+        var tablacl = $("#DataTable").DataTable({
+            "destroy" : true ,
+            "ajax" : 
+                    {
+                        "data" : list
+                    },
+            "columns" : [
+                        {title : "Errores"  }
+                    ],
+            columnDefs: [
+                    { width: '20px', targets: 0 },
+            ]
+        });
+        
+    }
+
+    function functionFecha(fecha){
+        var fechaDate = fecha.substring(0,10);
+        var hora = fecha.substring(11,19); ;
+        return fechaDate + ' ' + hora;
+    }
+
+    function linkDescarga(id){
+        return '<a href="#" onclick="bajar(' + id  + ')"> Descargar ';
+    }
+
+
+    function cargarTablaErrores(dataArray){
+        $("#idTitulo").text("Errores")
+        $("#DataTable").html("");
+
+        $("#tablaHistorial").html("");
+        // INSERTO LA TABLA EN EL DIV
+        $("#tablaHistorial").append('<table width="50%"  class="table table-striped table-bordes  table-hover" id="idtablaHistory">\n\
+            <thead> \n\
+                <tr>\n\
+                    <th>Errores</th> \n\
+                </tr>\n\
+            </thead>\n\
+            <tbody id="bodyData">'); // AGREGO CLASE PARA INSERTAR LA ITERACION DE LOS DATOS RECIBIDOS DESDE EL DAO
+
+        // ITERO EL JSON ALMACENADO EN data
+        for (var i = 0; i < dataArray.length; i++) {
+            $("#bodyData").append('<tr>\n\
+                        <td> ' + (dataArray[ i ]) + ' </td>\n\
+                </tr>');
+        }
+        $(".tablaHistorial").append('</tbody></table>');
+        var tablaencurso = $('#idtablaHistory').DataTable({
+            autoWidth: false, //step 1
+           "columnDefs": [
+               { width: '80px', targets: 0 }
+           ]
+        });
+    }
+
+    // mostrarTabla.onclick = modalTabla;
+
+
+</script>
